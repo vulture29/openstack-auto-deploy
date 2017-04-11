@@ -1,7 +1,13 @@
-# clean up
-
-# network configuration
 #!/bin/bash
+
+export PATH=$PATH:/sbin/:/usr/bin/:/bin/
+
+# Make sure only root can run our script
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root"
+   exit 2
+fi
+
 ##clean up the environment
 for x in $(virsh list --all | grep instance- | awk '{print $2}') ; do
     virsh destroy $x ;
@@ -19,14 +25,14 @@ rm -rf /etc/nagios /etc/yum.repos.d/packstack_* /root/.my.cnf \
 /var/cache/swift /var/log/keystone /var/log/cinder/ /var/log/nova/ \
 /var/log/httpd /var/log/glance/ /var/log/nagios/ /var/log/quantum/ ;
 
-umount /srv/node/device* ;
-killall -9 dnsmasq tgtd httpd ;
+umount /srv/node/device* >/dev/null 2>&1;
+killall -9 dnsmasq tgtd httpd >/dev/null 2>&1;
 
-vgremove -f cinder-volumes ;
-losetup -a | sed -e 's/:.*//g' | xargs losetup -d ;
+vgremove -f cinder-volumes >dev/null 2>&1;
+losetup -a | sed -e 's/:.*//g' | xargs losetup -d >/dev/null 2>&1; 
 find /etc/pki/tls -name "ssl_ps*" | xargs rm -rf ;
 for x in $(df | grep "/lib/" | sed -e 's/.* //g') ; do
-    umount $x ;
+    umount $x >/dev/null 2>&1;
 done
 
 ## Reading from answers.txt file
@@ -105,7 +111,7 @@ echo "LC_ALL=en_US.utf-8" >> /etc/environment
 
 # install packstack from the answer file
 # change the file name
-sudo yum install -y centos-release-openstack-newton
-sudo yum update -y
-sudo yum install -y openstack-packstack
-sudo packstack --answer-file=FILE
+yum install -y centos-release-openstack-newton
+yum update -y
+yum install -y openstack-packstack
+packstack --answer-file=FILE
