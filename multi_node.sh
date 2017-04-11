@@ -44,16 +44,14 @@ echo $CONFIG_COMPUTE_HOSTS
 echo $CONFIG_NETWORK_HOSTS
 
 ## Check if all the nodes are reachable from controller
-if ping -c 1 $CONFIG_COMPUTE_HOSTS
-then
+if ping -c 1 $CONFIG_COMPUTE_HOSTS >/dev/null 1>&2 ; then
   echo "$CONFIG_COMPUTE_HOSTS is reachable"
 else
   echo "$CONFIG_COMPUTE_HOSTS is unreachable"
   exit 1
 fi
 
-if ping -c 1 $CONFIG_NETWORK_HOSTS
-then
+if ping -c 1 $CONFIG_NETWORK_HOSTS >/dev/null 1>&2 ; then 
   echo "$CONFIG_NETWORK_HOSTS is reachable"
 else
   echo "$CONFIG_NETWORK_HOSTS is unreachable"
