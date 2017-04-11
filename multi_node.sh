@@ -9,7 +9,7 @@ echo "LC_ALL=en_US.utf-8" >> /etc/environment
 
 # install packstack
 # change the file name
-sudo yum install -y centos-release-openstack-ocata
+sudo yum install -y centos-release-openstack-newton
 sudo yum update -y
 sudo yum install -y openstack-packstack
 sudo packstack --answer-file=FILE
