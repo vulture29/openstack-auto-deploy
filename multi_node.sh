@@ -1,58 +1,33 @@
 # clean up
 
 # network configuration
-Last login: Mon Apr 10 20:36:07 on ttys001
-~$ 
-~$ cd shell_script/
-shell_script$ ls
-H2manush	multi_node.sh
-shell_script$ 
-shell_script$ 
-shell_script$ 
-shell_script$ vi multi_node.sh 
-shell_script$ vi multi_node.sh 
+#!/bin/bash
 
+## Reading from answers.txt file
+if [ -f "/root/newton-answer.txt" ]
+then
+  echo "File Exists\n"
+  source /root/newton-answer.txt
+else
+ echo "ERROR -- no file answer.txt"
+ exit 1
+fi
 
+echo $CONFIG_CONTROLLER_HOST
+echo $CONFIG_COMPUTE_HOSTS
+echo $CONFIG_NETWORK_HOSTS
 
+## Check if all the nodes are reachable from controller
+if ping -c 1 $CONFIG_COMPUTE_HOSTS
+then
+  echo "$CONFIG_COMPUTE_HOSTS is reachable"
+else
+  echo "$CONFIG_COMPUTE_HOSTS is unreachable"
+  exit 1
+fi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if ping -c 1 $CONFIG_NETWORK_HOSTS
+then
   echo "$CONFIG_NETWORK_HOSTS is reachable"
 else
   echo "$CONFIG_NETWORK_HOSTS is unreachable"
