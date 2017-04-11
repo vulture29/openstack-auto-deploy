@@ -45,10 +45,6 @@ else
  exit 1
 fi
 
-echo $CONFIG_CONTROLLER_HOST
-echo $CONFIG_COMPUTE_HOSTS
-echo $CONFIG_NETWORK_HOSTS
-
 ## Check if all the nodes are reachable from controller
 if ping -c 1 $CONFIG_COMPUTE_HOSTS >/dev/null 1>&2 ; then
   echo "$CONFIG_COMPUTE_HOSTS is reachable"
@@ -70,17 +66,18 @@ if lsmod | grep "ip_tables" &> /dev/null ; then
 else
   echo "ip_tables is not loaded!"
   echo "Installing ip_tables"
-`yum install iptables-services -y`
+  yum remove iptables-services -y >/dev/null 2>&1 
+  yum install iptables-services -y
 fi
 
 ## Making changes on Controller
 if lsmod | grep "firewalld" &> /dev/null ; then
   echo "firewalld is loaded!"
   echo "Disabling and stopping it"
-  `systemctl disable firewalld `
-  `systemctl stop firewalld `
-  `systemctl disable NetworkManager `
-  `systemctl stop NetworkManager `
+  systemctl disable firewalld
+  systemctl stop firewalld
+  systemctl disable NetworkManager
+  systemctl stop NetworkManager
 else
    echo "Firewalld is not loaded"
 fi
