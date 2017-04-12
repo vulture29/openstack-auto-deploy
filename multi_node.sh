@@ -2,6 +2,9 @@
 
 export PATH=$PATH:/sbin/:/usr/bin/:/bin/
 
+# modify the config file path
+CONFIG_FILE="/usr/local/openstack/config"
+
 # Make sure only root can run our script
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root"
@@ -31,7 +34,7 @@ fi
 # packstack installation
 if [ -f install_packstack.sh ] ; then 
 	source install_packstack.sh
-	install_packstack
+	install_packstack $CONFIG_FILE
 else
 	echo ""
 	echo "Packstack installation script is missing."
