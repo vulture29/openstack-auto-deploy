@@ -29,20 +29,12 @@ else
 fi
 
 # packstack installation
-# set language configuration
-echo ""
-echo "set language configuration..."
-sed -i 's/LANG=en_US.utf-8/#LANG=en_US.utf-8/g' /etc/environment
-sed -i 's/LC_ALL=en_US.utf-8/#LC_ALL=en_US.utf-8/g' /etc/environment
-echo "LANG=en_US.utf-8" >> /etc/environment
-echo "LC_ALL=en_US.utf-8" >> /etc/environment
+if [ -f install_packstack.sh ] ; then 
+	source install_packstack.sh
+	install_packstack
+else
+	echo ""
+	echo "Packstack installation script is missing."
+	exit 1
+fi
 
-# install packstack from the answer file
-# change the file name
-echo ""
-echo "installing the packstack packages..."
-yum install -y centos-release-openstack-newton >/dev/null 2>&1;
-yum update -y >/dev/null 2>&1;
-yum install -y openstack-packstack >/dev/null 2>&1;
-echo ""
-packstack --answer-file=FILE
