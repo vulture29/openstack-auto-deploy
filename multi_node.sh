@@ -40,4 +40,3 @@ else
 	echo "Packstack installation script is missing."
 	exit 1
 fi
-
