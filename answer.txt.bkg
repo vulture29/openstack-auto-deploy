@@ -19,27 +19,27 @@ CONFIG_SERVICE_WORKERS=%{::processorcount}
 CONFIG_MARIADB_INSTALL=y
 
 # Specify 'y' to install OpenStack Image Service (glance). ['y', 'n']
-CONFIG_GLANCE_INSTALL=n
+CONFIG_GLANCE_INSTALL=$GLANCE_ENABLE
 
 # Specify 'y' to install OpenStack Block Storage (cinder). ['y', 'n']
-CONFIG_CINDER_INSTALL=n
+CONFIG_CINDER_INSTALL=$CINDER_ENABLE
 
 # Specify 'y' to install OpenStack Shared File System (manila). ['y',
 # 'n']
 CONFIG_MANILA_INSTALL=n
 
 # Specify 'y' to install OpenStack Compute (nova). ['y', 'n']
-CONFIG_NOVA_INSTALL=n
+CONFIG_NOVA_INSTALL=$NOVA_ENABLE
 
 # Specify 'y' to install OpenStack Networking (neutron); otherwise,
 # Compute Networking (nova) will be used. ['y', 'n']
 CONFIG_NEUTRON_INSTALL=y
 
 # Specify 'y' to install OpenStack Dashboard (horizon). ['y', 'n']
-CONFIG_HORIZON_INSTALL=n
+CONFIG_HORIZON_INSTALL=$HORIZON_ENABLE
 
 # Specify 'y' to install OpenStack Object Storage (swift). ['y', 'n']
-CONFIG_SWIFT_INSTALL=n
+CONFIG_SWIFT_INSTALL=$SWIFT_ENABLE
 
 # Specify 'y' to install OpenStack Metering (ceilometer). ['y', 'n']
 CONFIG_CEILOMETER_INSTALL=y
@@ -92,14 +92,14 @@ CONFIG_DEBUG_MODE=n
 
 # Server on which to install OpenStack services specific to the
 # controller role (for example, API servers or dashboard).
-CONFIG_CONTROLLER_HOST=192.168.0.40
+CONFIG_CONTROLLER_HOST=192.168.9.9
 
 # List the servers on which to install the Compute service.
-CONFIG_COMPUTE_HOST=192.168.0.30
+CONFIG_COMPUTE_HOST=$COMPUTE_IP
 
 # List of servers on which to install the network service such as
 # Compute networking (nova network) or OpenStack Networking (neutron).
-CONFIG_NETWORK_HOST=192.168.0.20
+CONFIG_NETWORK_HOST=$NETWO`RK_IP
 
 # Specify 'y' if you want to use VMware vCenter as hypervisor and
 # storage; otherwise, specify 'n'. ['y', 'n']
@@ -136,7 +136,7 @@ CONFIG_VCENTER_CLUSTER_NAMES=
 
 # (Unsupported!) Server on which to install OpenStack services
 # specific to storage servers such as Image or Block Storage services.
-CONFIG_STORAGE_HOST=192.168.0.40
+CONFIG_STORAGE_HOST=$STORAGE_IP
 
 # (Unsupported!) Server on which to install OpenStack services
 # specific to OpenStack Data Processing (sahara).
