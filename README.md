@@ -9,3 +9,6 @@ OpenStack is a cloud operating system that controls large pools of compute, stor
 <br><br>The team has to setup a single node environment, in which the OpenStack services will be installed by spinning different virtual machines for each of the core OpenStack components viz. controller node, computer node and network node.
 <br><br>Also, they need to setup a multi-node setup, where the controller, network and compute nodes are on different physical machines and the appliance helps set up one controller, one network and as many number of compute nodes as required. All this is done with minimal user input and with good network connectivity.
 <br><br>The team must develop all schedules, test plans and other studies as needed to be able to provide an assessment, including documenting any information that the team concludes is unknown or uncertain based on the information that the team has been provided.
+
+### Flow Chart
+![](./img/flow.jpg)
