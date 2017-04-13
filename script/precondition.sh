@@ -2,6 +2,17 @@
 
 function before_install()
 {
+	#confirm if the user install kvm
+	if ! lsmod | grep -q kvm ; then
+		echo "KVM is not enabled"
+		exit 1
+	fi
+	#confirm if hardware virtualization
+	if ! cat /proc/cpuinfo | grep vmx >/dev/null 2>&1 ; then
+		 echo "Hardware Virtualization is not enabled."
+		 exit 1 
+	fi
+
 	#confirm the keystone
 	#cleaning port
 	yum install lsof;
