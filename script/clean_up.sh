@@ -34,4 +34,8 @@ function clean_up()
         for x in $(df | grep "/lib/" | sed -e 's/.* //g') ; do
                 umount $x >/dev/null 2>&1;
         done
+        
+        echo ""
+        echo "Removing config file."
+        rm -rf config/rc.conf
 }
