@@ -2,8 +2,8 @@
 
 USER_INPUT=1;
 
-CUSTOMIZED_CONFIG_PATH="/Users/macbook/Desktop/answer_customized.txt"
-DEFAULT_CONFIG_PATH="/home/xhuang17/OpenStackonaStick/answer.txt"
+CUSTOMIZED_CONFIG_PATH="config/rc.conf"
+DEFAULT_CONFIG_PATH="config/rc.conf.default"
 
 echo ""
 echo "CUSTOMIZED_CONFIG_PATH is " $CUSTOMIZED_CONFIG_PATH
