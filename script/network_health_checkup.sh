@@ -3,9 +3,9 @@
 function network_health_checkup()
 {
 	## Reading from answers.txt file
-	if [ -f "/root/newton-answer.txt" ]
+	if [ -f "config/answer.txt" ]
 	then
-		source /root/newton-answer.txt
+		source config/answer.txt
 	else
 		echo "ERROR -- no file answer.txt"
 		exit 1
