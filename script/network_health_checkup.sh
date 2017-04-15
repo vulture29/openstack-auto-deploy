@@ -3,9 +3,12 @@
 function network_health_checkup()
 {
 	## Reading from answers.txt file
-	if [ -f "config/answer.txt" ]
+	if [ -f "config/rc.conf.default" ]
 	then
 		source config/answer.txt
+	else if [ -f "config/rc.conf" ]
+	then
+		source config/rc.conf
 	else
 		echo "ERROR -- no file answer.txt"
 		exit 1
