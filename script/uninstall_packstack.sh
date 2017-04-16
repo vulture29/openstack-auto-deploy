@@ -53,9 +53,9 @@ if [ -f config/answer.txt ] ; then
 
         echo ""
         echo "Uninstalling packstack on controller node."
-        source clean_up.sh
+        source scripts/clean_up.sh
 else
         echo ""
         echo "Uninstalling packstack on controller node."
-        source clean_up.sh
+        source scripts/clean_up.sh
 fi
