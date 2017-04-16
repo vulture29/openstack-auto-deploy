@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -f clean_up.sh ]
+if [ ! -f clean_up.sh ] ; then
         echo ""
         echo "clean_ip.sh file is missing."
         exit 1;
