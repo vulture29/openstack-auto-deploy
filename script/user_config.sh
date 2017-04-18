@@ -6,7 +6,6 @@ CUSTOMIZED_CONFIG_PATH="config/rc.conf"
 DEFAULT_CONFIG_PATH="config/rc.conf.default"
 
 echo ""
-echo "CUSTOMIZED_CONFIG_PATH is " $CUSTOMIZED_CONFIG_PATH
 
 echo ""
 while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1 ; do
@@ -53,7 +52,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 			echo ""
 			read -p "Please enter the network node IP (x.x.x.x): " NETWORK_IP
 			echo ""
-			read -p "Please enter the conpute node IP (x.x.x.x): " COMPUTE_IP
+			read -p "Please enter the compute node IP (x.x.x.x): " COMPUTE_IP
 			echo ""
 			read -p "Please enter the controller node IP (x.x.x.x): " CONTROLLER_IP
 			echo ""
@@ -70,8 +69,8 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 			done
 			
 			echo ""
-			while read -p "Do you want to enable NEUTREN?(y/n)" NEUTREN_ENABLE ; do
-				case $NEUTREN_ENABLE in
+			while read -p "Do you want to enable NEUTRON?(y/n)" NEUTRON_ENABLE ; do
+				case $NEUTRON_ENABLE in
 					y)	break;;
 					n)	break;;
 					*)	
@@ -132,7 +131,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 			sed -i "s/^CONFIG_STORAGE_HOST.*$/CONFIG_STORAGE_HOST=$STORAGE_IP/g" $DEFAULT_CONFIG_PATH
 
 			sed -i "s/^CONFIG_NOVA_INSTALL.*$/CONFIG_NOVA_INSTALL=$NOVA_ENABLE/g" "$DEFAULT_CONFIG_PATH"
-			sed -i "s/^CONFIG_NEUTREN_INSTALL.*$/CONFIG_NEUTREN_INSTALL=$NEUTREN_ENABLE/g" "$DEFAULT_CONFIG_PATH"
+			sed -i "s/^CONFIG_NEUTRON_INSTALL.*$/CONFIG_NEUTRON_INSTALL=$NEUTRON_ENABLE/g" "$DEFAULT_CONFIG_PATH"
 			sed -i "s/^CONFIG_GLANCE_INSTALL.*$/CONFIG_GLANCE_INSTALL=$GLANCE_ENABLE/g" "$DEFAULT_CONFIG_PATH"
 			sed -i "s/^CONFIG_HORIZON_INSTALL.*$/CONFIG_HORIZON_INSTALL=$HORIZON_ENABLE/g" "$DEFAULT_CONFIG_PATH"
 			sed -i "s/^CONFIG_CINDER_INSTALL.*$/CONFIG_CINDER_INSTALL=$CINDER_ENABLE/g" "$DEFAULT_CONFIG_PATH"
