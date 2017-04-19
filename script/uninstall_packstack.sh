@@ -6,6 +6,14 @@ if [ ! -f scripts/clean_up.sh ] ; then
         exit 1;
 fi
 
+echo ""
+echo "Do you waant to proceed with uninstallation ? [y/n]"
+read answer
+
+if [ $answer == "n" ] || [ $answer == "N" ] ; then
+	exit 0
+fi
+
 if [ -f config/answer.txt ] ; then
 
         if [ ! -z $CONFIG_COMPUTE_HOST ] ; then
@@ -59,3 +67,6 @@ else
         echo "Uninstalling packstack on controller node."
         source scripts/clean_up.sh
 fi
+
+echo ""
+echo "Sucessfully Uninstalled Openstack."
