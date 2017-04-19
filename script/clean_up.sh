@@ -11,8 +11,8 @@ function clean_up()
         done ;
 
         echo ""
-        echo "Removing RPM's."
-        yum remove -y nrpe "*nagios*" puppet "*ntp*" "*openstack*" \
+        echo "Removing openstack RPM's."
+        yum remove -y nrpe "*nagios*" packstack puppet "*ntp*" "*openstack*" \
         "*nova*" "*keystone*" "*glance*" "*cinder*" "*swift*" "*neutron*" \
         mysql mysql-server httpd "*memcache*" scsi-target-utils \
         iscsi-initiator-utils perl-DBI perl-DBD-MySQL >/dev/null 2>&1;
