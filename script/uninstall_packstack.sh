@@ -18,7 +18,7 @@ if [ -f config/answer.txt ] ; then
 
         if [ ! -z $CONFIG_COMPUTE_HOST ] ; then
                 echo ""
-                echo "Uninstalling packstack on compute node."
+                echo "Uninstalling openstack on compute node."
 
                 # scp the clean up scrip to the compute node.
                 scp scripts/clean_up.sh root@$CONFIG_CONTROLLER_HOST:/root/
@@ -32,7 +32,7 @@ if [ -f config/answer.txt ] ; then
 
         if [ ! -z $CONFIG_NETWORK_HOST ] ; then
                 echo ""
-                echo "Uninstalling packstack on network node."
+                echo "Uninstalling openstack on network node."
 
                 # scp the clean up scrip to the network node.
                 scp scripts/clean_up.sh root@$CONFIG_NETWORK_HOST:/root/
@@ -47,7 +47,7 @@ if [ -f config/answer.txt ] ; then
 		
         if [ ! -z $CONFIG_STORAGE_HOST ] ; then
                 echo ""
-                echo "Uninstalling packstack on storage node."
+                echo "Uninstalling openstack on storage node."
 
                 # scp the clean up scrip to the controller node.
                 scp scripts/clean_up.sh root@$CONFIG_CONTROLLER_HOST:/root/
@@ -60,11 +60,11 @@ if [ -f config/answer.txt ] ; then
         fi
 
         echo ""
-        echo "Uninstalling packstack on controller node."
+        echo "Uninstalling openstack on controller node."
         source scripts/clean_up.sh
 else
         echo ""
-        echo "Uninstalling packstack on controller node."
+        echo "Uninstalling openstack --allinone."
         source scripts/clean_up.sh
 fi
 
