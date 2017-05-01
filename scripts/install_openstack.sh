@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function install_packstack()
+function install_openstack()
 {
 	# set language configuration
 	echo ""

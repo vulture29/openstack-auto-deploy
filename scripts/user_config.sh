@@ -15,6 +15,9 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
     	echo "Installing with the default config..."
 	# install with allinone
 
+	# update the CONFIG_FILE_PATH to default 
+	CONFIG_FILE_PATH=config/rc.conf.default
+	
 	break;;
     no) 
     	echo ""
@@ -33,6 +36,9 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 					USER_INPUT=0;
 					# install with the existed config file
 
+					# update the CONFIG_FILE_PATH to user configured file 
+					CONFIG_FILE_PATH=config/rc.conf
+
 					break;;
 				no)	
 					break;;
@@ -45,6 +51,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 		echo ""
 		echo "The customized config file is not existed."
 	fi
+
 	if [ $USER_INPUT -eq 1 ]; then
 			echo ""
 			echo "Starting user input configuration..."
@@ -136,6 +143,9 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 			sed -i "s/^CONFIG_HORIZON_INSTALL.*$/CONFIG_HORIZON_INSTALL=$HORIZON_ENABLE/g" "$DEFAULT_CONFIG_PATH"
 			sed -i "s/^CONFIG_CINDER_INSTALL.*$/CONFIG_CINDER_INSTALL=$CINDER_ENABLE/g" "$DEFAULT_CONFIG_PATH"
 			sed -i "s/^CONFIG_SWIFT_INSTALL.*$/CONFIG_SWIFT_INSTALL=$SWIFT_ENABLE/g" "$DEFAULT_CONFIG_PATH"
+			
+			# update the CONFIG_FILE_PATH to config file 
+			CONFIG_FILE_PATH=config/rc.conf
 			
 			# install with the default config file
 			echo "Installing with the config file..."
