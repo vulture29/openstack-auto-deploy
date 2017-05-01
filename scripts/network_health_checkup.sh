@@ -3,12 +3,10 @@
 function network_health_checkup()
 {
 	## Reading from answers.txt file
-	if [ -f "config/rc.conf.default" ]
-	then
-		source config/rc.conf.default 2>&1 /dev/null
-	elif [ -f "config/rc.conf" ]
-	then
-		source config/rc.conf 2>&1 >/dev/null
+	if [ -f "config/rc.conf.default" ] ; then
+		source config/rc.conf.default >/dev/null 2>&1
+	elif [ -f "config/rc.conf" ] ; then 
+		source config/rc.conf >/dev/null 2>&1
 	else
 		echo ""
 		echo "ERROR -- no file config file."
@@ -16,22 +14,26 @@ function network_health_checkup()
 	fi
 
 	## Check if all the nodes are reachable from controller
-	if [ ! -z $CONFIG_COMPUTE_HOSTS ] && ping -c 1 $CONFIG_COMPUTE_HOSTS >/dev/null 1>&2 ; then
-		echo ""
-		echo "Compute Host is reachable."
-	else
-		echo ""
-		echo "Compute Host is unreachable. exiting !!"
-		exit 1
+	if [ ! -z $CONFIG_COMPUTE_HOSTS ] ; then 
+		if ping -c 1 $CONFIG_COMPUTE_HOSTS &>/dev/null ; then
+			echo ""
+			echo "Compute Host is reachable."
+		else
+			echo ""
+			echo "Compute Host is unreachable. exiting !!"
+			exit 1
+		fi
 	fi
 
-	if [ ! -z $CONFIG_NETWORK_HOSTS ] && ping -c 1 $CONFIG_NETWORK_HOSTS >/dev/null 1>&2 ; then 
-		echo ""
-		echo "Network Host is reachable"
-	else
-		echo ""
-		echo "Network Host is unreachable. exiting !!"
-		exit 1
+	if [ ! -z $CONFIG_NETWORK_HOSTS ] ; then 
+		if ping -c 1 $CONFIG_NETWORK_HOSTS &>/dev/null ; then 
+			echo ""
+			echo "Network Host is reachable"
+		else
+			echo ""
+			echo "Network Host is unreachable. exiting !!"
+			exit 1
+		fi
 	fi
 
 	##Check if modules are available on A
