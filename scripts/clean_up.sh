@@ -40,4 +40,4 @@ function clean_up()
         rm -rf config/rc.conf
 }
 
-#clean_up
+clean_up
