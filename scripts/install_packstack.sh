@@ -8,6 +8,7 @@ function generate_answer_file()
 	local tempFile=$(mktemp)
 	packstack --gen-answer-file=$tempFile
 	cp -f $tempFile config/rc.conf.default
+	cp -f $tempFile config/rc.conf
 	rm -rf $tempFile
 }
 
