@@ -23,10 +23,8 @@ if [ -f config/rc.conf ] ; then
                 # scp the clean up scrip to the compute node.
                 scp scripts/clean_up.sh root@$CONFIG_CONTROLLER_HOST:/root/
 
-# run clean up script by doing SSH to the node.
-ssh root@$CONFIG_CONTROLLER_HOST <<ENDSSH1
-	source /root/clean_up.sh
-ENDSSH1
+		# run clean up script by doing SSH to the node.
+		ssh root@$CONFIG_CONTROLLER_HOST /root/clean_up.sh
 
         fi
 
@@ -37,11 +35,10 @@ ENDSSH1
                 # scp the clean up scrip to the network node.
                 scp scripts/clean_up.sh root@$CONFIG_NETWORK_HOST:/root/
 
-# run clean up script by doing SSH to the node.
-ssh root@$CONFIG_NETWORK_HOST <<-ENDSSH2
-	source /root/clean_up.sh
-ENDSSH2
-        fi
+		# run clean up script by doing SSH to the node.
+		ssh root@$CONFIG_NETWORK_HOST /root/clean_up.sh
+	
+	fi
 		
 		
         if [ ! -z $CONFIG_STORAGE_HOST ] ; then
@@ -51,11 +48,10 @@ ENDSSH2
                 # scp the clean up scrip to the controller node.
                 scp scripts/clean_up.sh root@$CONFIG_CONTROLLER_HOST:/root/
 
-# run clean up script by doing SSH to the node.
-ssh root@$CONFIG_CONTROLLER_HOST <<ENDSSH3
-source /root/clean_up.sh
-ENDSSH3
-        fi
+		# run clean up script by doing SSH to the node.
+		ssh root@$CONFIG_CONTROLLER_HOST /root/clean_up.sh
+        
+	fi
 
         echo ""
         echo "Uninstalling openstack on controller node."
