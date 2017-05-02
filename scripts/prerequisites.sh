@@ -2,6 +2,9 @@
 
 function precheck_before_install()
 {
+	echo ""
+	echo "--> Verfiy the virtualization related prerequisite."
+
         #confirm if hardware virtualization
         if ! egrep -c '(vmx|svm)' /proc/cpuinfo >/dev/null 2>&1 ; then
                 echo ""
@@ -34,7 +37,10 @@ function precheck_before_install()
                 yum install lsof >/dev/null 1>&2
         fi
 
-        #confirm the keystone
+	echo ""
+	echo "--> Verfiy the port number related prerequisite."
+        
+	#confirm the keystone
         if lsof -i :5000 >/dev/null ; then
                 echo ""
                 echo "Port 5000 is not free. It is a prerequisite for keystone service."

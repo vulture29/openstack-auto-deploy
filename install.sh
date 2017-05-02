@@ -11,7 +11,24 @@ if [ "$(id -u)" != "0" ]; then
    exit 2
 fi
 
+# install packstack
+echo "########################################"
+echo "#          Installing packstack        #"
+echo "########################################"
+if [ -f scripts/install_packstack.sh ] ; then 
+	source scripts/install_packstack.sh
+	generate_answer_file
+else
+	echo ""
+	echo "Install packstack script is missing."
+	exit 1
+fi
+
 # user config step
+echo ""
+echo "########################################"
+echo "#        User Configuration            #"
+echo "########################################"
 if [ -f scripts/user_config.sh ] ; then 
 	source scripts/user_config.sh
 else
@@ -21,6 +38,10 @@ else
 fi
 
 # clean up step
+echo ""
+echo "########################################"
+echo "#          Clean Up System             #"
+echo "########################################"
 if [ -f scripts/clean_up.sh ] ; then 
 	source scripts/clean_up.sh
 else
@@ -30,6 +51,10 @@ else
 fi
 
 # Network Health Checkup step
+echo ""
+echo "########################################"
+echo "#        Network Health Checkup        #"
+echo "########################################"
 if [ -f scripts/network_health_checkup.sh ] ; then 
 	source scripts/network_health_checkup.sh
 else
@@ -39,6 +64,10 @@ else
 fi
 
 # Prerequisite Checkup step
+echo ""
+echo "########################################"
+echo "#          Prerequisite checkup        #"
+echo "########################################"
 if [ -f scripts/prerequisites.sh ] ; then 
 	source scripts/prerequisites.sh
 else
@@ -48,12 +77,16 @@ else
 fi
 
 
-# packstack installation
+# OpenStack installation
+echo ""
+echo "########################################"
+echo "#          Installing OpenStack        #"
+echo "########################################"
 if [ -f scripts/install_openstack.sh ] ; then 
 	source scripts/install_openstack.sh
 	install_openstack $CONFIG_FILE_PATH
 else
 	echo ""
-	echo "Packstack installation script is missing."
+	echo "OpenStack installation script is missing."
 	exit 1
 fi

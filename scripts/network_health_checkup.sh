@@ -2,6 +2,9 @@
 
 function network_health_checkup()
 {
+	echo ""
+	echo "--> Checking the network inter connectivity among nodes."
+	
 	## Reading from answers.txt file
 	if [ -f "config/rc.conf.default" ] ; then
 		source config/rc.conf.default >/dev/null 2>&1
@@ -17,10 +20,10 @@ function network_health_checkup()
 	if [ ! -z $CONFIG_COMPUTE_HOSTS ] ; then 
 		if ping -c 1 $CONFIG_COMPUTE_HOSTS &>/dev/null ; then
 			echo ""
-			echo "Compute Host is reachable."
+			echo "Compute Node is reachable."
 		else
 			echo ""
-			echo "Compute Host is unreachable. exiting !!"
+			echo "Compute Node is unreachable. exiting !!"
 			exit 1
 		fi
 	fi
@@ -28,14 +31,67 @@ function network_health_checkup()
 	if [ ! -z $CONFIG_NETWORK_HOSTS ] ; then 
 		if ping -c 1 $CONFIG_NETWORK_HOSTS &>/dev/null ; then 
 			echo ""
-			echo "Network Host is reachable"
+			echo "Network Node is reachable"
 		else
 			echo ""
-			echo "Network Host is unreachable. exiting !!"
+			echo "Network Node is unreachable. exiting !!"
 			exit 1
 		fi
 	fi
 
+	if [ ! -z $CONFIG_STORAGE_HOST ] ; then 
+		if ping -c 1 $CONFIG_STORAGE_HOST &>/dev/null ; then 
+			echo ""
+			echo "Storage Node is reachable"
+		else
+			echo ""
+			echo "Storage Node is unreachable. exiting !!"
+			exit 1
+		fi
+	fi
+
+
+	echo ""
+	echo "--> Checking the internet connectivity on all the nodes."
+	
+	# test the internet connectivity on the controller node.
+	ping -c 1 8.8.8.8 &> /dev/null 
+	if [ $? -ne 0 ] ; then 
+		echo ""
+		echo "Internet connectivity is down on Controller Node. exiting !!"
+		exit 1
+	fi
+
+	# test the internet connectivity on the compute node.
+	if [ ! -z $CONFIG_COMPUTE_HOSTS ] ; then 
+		ssh root@$CONFIG_COMPUTE_HOSTS ping -c 1 8.8.8.8 &> /dev/null
+		if [ $? -ne 0 ] ; then 
+			echo ""
+			echo "Internet connectivity is down on Compute Node. exiting !!"
+			exit 1
+		fi
+	fi
+	
+	# test the internet connectivity on the network node.
+	if [ ! -z $CONFIG_NETWORK_HOSTS ] ; then 
+		ssh root@$CONFIG_COMPUTE_HOSTS ping -c 1 8.8.8.8 &> /dev/null 
+		if [ $? -ne 0 ] ; then 
+			echo ""
+			echo "Internet connectivity is down on Network Node. exiting !!"
+			exit 1
+		fi
+	fi
+	
+	# test the internet connectivity on the storage node.
+	if [ ! -z $CONFIG_STORAGE_HOST ] ; then 
+		ssh root@$CONFIG_STORAGE_HOST ping -c 1 8.8.8.8 &> /dev/null 
+		if [ $? -ne 0 ] ; then 
+			echo ""
+			echo "Internet connectivity is down on Storage Node. exiting !!"
+			exit 1
+		fi
+	fi
+	
 	##Check if modules are available on A
 	if lsmod | grep "ip_tables" &> /dev/null ; then
 		echo ""

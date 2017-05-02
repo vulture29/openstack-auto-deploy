@@ -92,7 +92,7 @@ CONFIG_DEBUG_MODE=n
 
 # Server on which to install OpenStack services specific to the
 # controller role (for example, API servers or dashboard).
-CONFIG_CONTROLLER_HOST=
+CONFIG_CONTROLLER_HOST=152.46.20.90
 
 # List the servers on which to install the Compute service.
 CONFIG_COMPUTE_HOSTS=152.46.20.90
@@ -268,16 +268,16 @@ CONFIG_SSL_CERT_SUBJECT_O=openstack
 CONFIG_SSL_CERT_SUBJECT_OU=packstack
 
 # Enter the ssl certificates subject common name.
-CONFIG_SSL_CERT_SUBJECT_CN=bn20-36.dcs.mcnc.org
+CONFIG_SSL_CERT_SUBJECT_CN=bn20-90.dcs.mcnc.org
 
-CONFIG_SSL_CERT_SUBJECT_MAIL=admin@bn20-36.dcs.mcnc.org
+CONFIG_SSL_CERT_SUBJECT_MAIL=admin@bn20-90.dcs.mcnc.org
 
 # Service to be used as the AMQP broker. Allowed values are: rabbitmq
 # ['rabbitmq']
 CONFIG_AMQP_BACKEND=rabbitmq
 
 # IP address of the server on which to install the AMQP service.
-CONFIG_AMQP_HOST=
+CONFIG_AMQP_HOST=152.46.20.90
 
 # Specify 'y' to enable SSL for the AMQP service. ['y', 'n']
 CONFIG_AMQP_ENABLE_SSL=n
@@ -299,17 +299,17 @@ CONFIG_AMQP_AUTH_PASSWORD=PW_PLACEHOLDER
 # installation was not specified in CONFIG_MARIADB_INSTALL, specify
 # the IP address of an existing database server (a MariaDB cluster can
 # also be specified).
-CONFIG_MARIADB_HOST=
+CONFIG_MARIADB_HOST=152.46.20.90
 
 # User name for the MariaDB administrative user.
 CONFIG_MARIADB_USER=root
 
 # Password for the MariaDB administrative user.
-CONFIG_MARIADB_PW=31cba505c5944100
+CONFIG_MARIADB_PW=7ba808fad18a444d
 
 # Password to use for the Identity service (keystone) to access the
 # database.
-CONFIG_KEYSTONE_DB_PW=7f643a8691144621
+CONFIG_KEYSTONE_DB_PW=b38940099dc04486
 
 # Enter y if cron job for removing soft deleted DB rows should be
 # created.
@@ -320,7 +320,7 @@ CONFIG_KEYSTONE_DB_PURGE_ENABLE=True
 CONFIG_KEYSTONE_REGION=RegionOne
 
 # Token to use for the Identity service API.
-CONFIG_KEYSTONE_ADMIN_TOKEN=3a23769588ce4f25a391d0dcbe7177cf
+CONFIG_KEYSTONE_ADMIN_TOKEN=770f602aad3c43c0813f7ecd438e06ec
 
 # Email address for the Identity service 'admin' user.  Defaults to
 CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
@@ -330,10 +330,10 @@ CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
 CONFIG_KEYSTONE_ADMIN_USERNAME=admin
 
 # Password to use for the Identity service 'admin' user.
-CONFIG_KEYSTONE_ADMIN_PW=3c8e9fa000294e6b
+CONFIG_KEYSTONE_ADMIN_PW=b3624dd47bf4409e
 
 # Password to use for the Identity service 'demo' user.
-CONFIG_KEYSTONE_DEMO_PW=f79612aca0f146dc
+CONFIG_KEYSTONE_DEMO_PW=cb64c877bd0748e4
 
 # Identity service API version string. ['v2.0', 'v3']
 CONFIG_KEYSTONE_API_VERSION=v2.0
@@ -515,11 +515,11 @@ CONFIG_KEYSTONE_LDAP_TLS_REQ_CERT=demand
 
 # Password to use for the Image service (glance) to access the
 # database.
-CONFIG_GLANCE_DB_PW=cc77cd18307f4bcb
+CONFIG_GLANCE_DB_PW=da904655ed4441ae
 
 # Password to use for the Image service to authenticate with the
 # Identity service.
-CONFIG_GLANCE_KS_PW=46b699e7259d4c8a
+CONFIG_GLANCE_KS_PW=8c85a2e66a694a94
 
 # Storage backend for the Image service (controls how the Image
 # service stores disk images). Valid options are: file or swift
@@ -530,7 +530,7 @@ CONFIG_GLANCE_BACKEND=file
 
 # Password to use for the Block Storage service (cinder) to access
 # the database.
-CONFIG_CINDER_DB_PW=97d2b296399a40b2
+CONFIG_CINDER_DB_PW=9ae61c9e0dd74785
 
 # Enter y if cron job for removing soft deleted DB rows should be
 # created.
@@ -538,7 +538,7 @@ CONFIG_CINDER_DB_PURGE_ENABLE=True
 
 # Password to use for the Block Storage service to authenticate with
 # the Identity service.
-CONFIG_CINDER_KS_PW=fd7a1dbd00064b7b
+CONFIG_CINDER_KS_PW=f2dcbd81cac74290
 
 # Storage backend to use for the Block Storage service; valid options
 # are: lvm, gluster, nfs, vmdk, netapp, solidfire. ['lvm', 'gluster',
@@ -716,11 +716,11 @@ CONFIG_NOVA_DB_PURGE_ENABLE=True
 
 # Password to use for the Compute service (nova) to access the
 # database.
-CONFIG_NOVA_DB_PW=dcb9180615454886
+CONFIG_NOVA_DB_PW=73ca1c96acc74dcb
 
 # Password to use for the Compute service to authenticate with the
 # Identity service.
-CONFIG_NOVA_KS_PW=08f3061ef4b442b6
+CONFIG_NOVA_KS_PW=d6e08e1c174c44d8
 
 # Whether or not Packstack should manage a default initial set of
 # Nova flavors. Defaults to 'y'.
@@ -803,11 +803,11 @@ CONFIG_NOVA_NETWORK_SIZE=255
 
 # Password to use for OpenStack Networking (neutron) to authenticate
 # with the Identity service.
-CONFIG_NEUTRON_KS_PW=f275fce291a845c2
+CONFIG_NEUTRON_KS_PW=4771f03d5c404af5
 
 # The password to use for OpenStack Networking to access the
 # database.
-CONFIG_NEUTRON_DB_PW=01630d695a0f4817
+CONFIG_NEUTRON_DB_PW=3081f644dd1c4665
 
 # The name of the Open vSwitch bridge (or empty for linuxbridge) for
 # the OpenStack Networking L3 agent to use for external  traffic.
@@ -816,7 +816,7 @@ CONFIG_NEUTRON_DB_PW=01630d695a0f4817
 CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 
 # Password for the OpenStack Networking metadata agent.
-CONFIG_NEUTRON_METADATA_PW=ce01b921188e4440
+CONFIG_NEUTRON_METADATA_PW=62f135a41dbb434f
 
 # Specify 'y' to install OpenStack Networking's Load-Balancing-
 # as-a-Service (LBaaS). ['y', 'n']
@@ -1103,7 +1103,7 @@ CONFIG_MANILA_GLUSTERFS_GANESHA_SERVER_IP=
 CONFIG_HORIZON_SSL=n
 
 # Secret key to use for Horizon Secret Encryption Key.
-CONFIG_HORIZON_SECRET_KEY=5917e67aebb54c7baae9f813b47a5120
+CONFIG_HORIZON_SECRET_KEY=7c92b005f9d948e4941847c2803a78a3
 
 # PEM-encoded certificate to be used for SSL connections on the https
 # server. To generate a certificate, leave blank.
@@ -1117,7 +1117,7 @@ CONFIG_HORIZON_SSL_CACERT=
 
 # Password to use for the Object Storage service to authenticate with
 # the Identity service.
-CONFIG_SWIFT_KS_PW=59f54219b667481b
+CONFIG_SWIFT_KS_PW=27c357f2ed014375
 
 # Comma-separated list of devices to use as storage device for Object
 # Storage. Each entry must take the format /path/to/dev (for example,
@@ -1141,7 +1141,7 @@ CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
 # is automatically generated.
-CONFIG_SWIFT_HASH=2ffba6cf279046d0
+CONFIG_SWIFT_HASH=a66dd9763bb34327
 
 # Size of the Object Storage loopback file storage device.
 CONFIG_SWIFT_STORAGE_SIZE=2G
@@ -1152,7 +1152,7 @@ CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
-CONFIG_HEAT_AUTH_ENC_KEY=af62f7880ae74e7a
+CONFIG_HEAT_AUTH_ENC_KEY=1d262f9434d64dac
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
@@ -1248,18 +1248,18 @@ CONFIG_RUN_TEMPEST_TESTS=smoke
 CONFIG_PROVISION_OVS_BRIDGE=y
 
 # Password to use for Gnocchi to access the database.
-CONFIG_GNOCCHI_DB_PW=656cdca3ce814a52
+CONFIG_GNOCCHI_DB_PW=90ae5f5a7c7748b5
 
 # Password to use for Gnocchi to authenticate with the Identity
 # service.
-CONFIG_GNOCCHI_KS_PW=0659ba9b29704622
+CONFIG_GNOCCHI_KS_PW=56c77c94063d43aa
 
 # Secret key for signing Telemetry service (ceilometer) messages.
-CONFIG_CEILOMETER_SECRET=10d8c4ea5c8945c0
+CONFIG_CEILOMETER_SECRET=7e1d23d66f6f4f50
 
 # Password to use for Telemetry to authenticate with the Identity
 # service.
-CONFIG_CEILOMETER_KS_PW=15fe81aa889b4b88
+CONFIG_CEILOMETER_KS_PW=481c4b08d5a04b3d
 
 # Ceilometer service name. ['httpd', 'ceilometer']
 CONFIG_CEILOMETER_SERVICE_NAME=httpd
@@ -1273,17 +1273,17 @@ CONFIG_CEILOMETER_COORDINATION_BACKEND=redis
 CONFIG_CEILOMETER_METERING_BACKEND=database
 
 # IP address of the server on which to install MongoDB.
-CONFIG_MONGODB_HOST=
+CONFIG_MONGODB_HOST=152.46.20.90
 
 # IP address of the server on which to install the Redis server.
-CONFIG_REDIS_HOST=
+CONFIG_REDIS_HOST=152.46.20.90
 
 # Port on which the Redis server listens.
 CONFIG_REDIS_PORT=6379
 
 # Password to use for Telemetry Alarming to authenticate with the
 # Identity service.
-CONFIG_AODH_KS_PW=3d777d8373204487
+CONFIG_AODH_KS_PW=431bdb552faf4e95
 
 # Password to use for OpenStack Database-as-a-Service (trove) to
 # access the database.
@@ -1314,4 +1314,4 @@ CONFIG_SAHARA_DB_PW=PW_PLACEHOLDER
 CONFIG_SAHARA_KS_PW=PW_PLACEHOLDER
 
 # Password of the nagiosadmin user on the Nagios server.
-CONFIG_NAGIOS_PW=f92af8a14ed24977
+CONFIG_NAGIOS_PW=94b15a8b591f433a

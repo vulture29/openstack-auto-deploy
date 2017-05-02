@@ -6,13 +6,11 @@ CUSTOMIZED_CONFIG_PATH="config/rc.conf"
 DEFAULT_CONFIG_PATH="config/rc.conf.default"
 
 echo ""
-
-echo ""
 while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1 ; do
   case $REPLY1 in
     yes)
     	echo ""
-    	echo "Installing with the default config..."
+    	echo "--> Installing with the default config."
 	# install with allinone
 
 	# update the CONFIG_FILE_PATH to default 
@@ -21,7 +19,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 	break;;
     no) 
     	echo ""
-    	echo "Checking if the customized config file is existed..."
+    	echo "--> Checking if the customized config file is existed."
 	if [ -f $CUSTOMIZED_CONFIG_PATH ]; then
 		# the customized config file is existed
 		echo ""
@@ -32,7 +30,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
   			case $REPLY2 in
   				yes) 
 					echo ""
-					echo "Installing with the existed config file..."
+					echo "--> Installing with the existed config file."
 					USER_INPUT=0;
 					# install with the existed config file
 
@@ -54,7 +52,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 
 	if [ $USER_INPUT -eq 1 ]; then
 			echo ""
-			echo "Starting user input configuration..."
+			echo "--> Starting user input configuration."
 			# user input configuration
 			echo ""
 			read -p "Please enter the network node IP (x.x.x.x): " NETWORK_IP
@@ -148,7 +146,7 @@ while read -p "Want to proceed with default config -- allinone?(yes/no) " REPLY1
 			CONFIG_FILE_PATH=config/rc.conf
 			
 			# install with the default config file
-			echo "Installing with the config file..."
+			echo "--> Installing with the config file."
 
 	fi
 	break;;

@@ -3,7 +3,7 @@
 function clean_up()
 {
         echo ""
-        echo "Destroying VM's and undefining them."
+        echo "--> Destroying VM's and undefining them."
         ##clean up the environment
         for x in $(virsh list --all | grep instance- | awk '{print $2}') ; do
                 virsh destroy $x ;
@@ -11,7 +11,7 @@ function clean_up()
         done ;
 
         echo ""
-        echo "Removing openstack RPM's."
+        echo "--> Removing openstack RPM's."
         yum remove -y nrpe "*nagios*" packstack puppet "*ntp*" "*openstack*" \
         "*nova*" "*keystone*" "*glance*" "*cinder*" "*swift*" "*neutron*" \
         mysql mysql-server httpd "*memcache*" scsi-target-utils \
@@ -27,7 +27,7 @@ function clean_up()
         killall -9 dnsmasq tgtd httpd >/dev/null 2>&1;
 
         echo ""
-        echo "Removing cinder volumes."
+        echo "--> Removing cinder volumes."
         vgremove -f cinder-volumes >/dev/null 2>&1;
         losetup -a | sed -e 's/:.*//g' | xargs losetup -d >/dev/null 2>&1;
         find /etc/pki/tls -name "ssl_ps*" | xargs rm -rf ;
@@ -36,7 +36,7 @@ function clean_up()
         done
         
         echo ""
-        echo "Removing config file."
+        echo "--> Removing config file."
         rm -rf config/rc.conf
 }
 
