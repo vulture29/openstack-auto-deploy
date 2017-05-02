@@ -7,6 +7,12 @@ function generate_answer_file()
 	echo ""
 	local tempFile=$(mktemp)
 	packstack --gen-answer-file=$tempFile
+	
+	# disable some service by default
+	sed -i "s/^CONFIG_CEILOMETER_INSTALL.*$/CONFIG_CEILOMETER_INSTALL=n/g" "$DEFAULT_CONFIG_PATH"
+	sed -i "s/^CONFIG_AODH_INSTALL.*$/CONFIG_AODH_INSTALL=n/g" "$DEFAULT_CONFIG_PATH"
+	sed -i "s/^CONFIG_GNOCCHI_INSTALL.*$/CONFIG_GNOCCHI_INSTALL=n/g" "$DEFAULT_CONFIG_PATH"
+
 	cp -f $tempFile config/rc.conf.default
 	cp -f $tempFile config/rc.conf
 	rm -rf $tempFile
