@@ -1,5 +1,4 @@
-# OpenStackonaStick
-Course project of CSC 547
+# OpenStack Auto-deployment Tool
 
 ### Abstract
 OpenStack is a cloud operating system that controls large pools of compute, storage and networking resources throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface. With the increasing demand of the cloud services, the stakeholders need to be able to get the system up and running quickly without having to go through the intricacies of configuring the environment. Design and construct Open Stack on a stick. An automated installation and setup of the environment is something that might come handy when training needs to be provided to the stakeholders as well as when the business is growing rapidly.
